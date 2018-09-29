@@ -1,18 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HouseHold">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/mobileNumber"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/address"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="Mobile Number"
+        android:inputType="phone"
+        tools:layout_height="50dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/age"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        tools:layout_height="50dp" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lastName"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        tools:layout_height="50dp" />
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstName"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        tools:layout_height="50dp" />
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        tools:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Name of the Family Head"
+        android:textSize="16dp" />
+
+    <Spinner
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/civilStatus"
+        android:layout_marginTop="10dp" />
+
+    <Spinner
+        android:id="@+id/civilStatus"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/gender"
+        android:layout_marginTop="10dp" />
+
+    <Spinner
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/mobileNumber"
+        android:layout_marginTop="10dp" />
+</RelativeLayout>
