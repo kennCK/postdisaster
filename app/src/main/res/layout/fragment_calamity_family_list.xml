@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FamilyList">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,24 +14,24 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/textViewF"/>
+            android:id="@+id/textViewCF"/>
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listViewF"
-            android:layout_below="@+id/textViewF"
+            android:id="@+id/listViewCF"
+            android:layout_below="@+id/textViewCF"
             android:layout_marginTop="10dp"></ListView>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/okBtnF"
+            android:id="@+id/okBtnCF"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/listViewF"
+            android:layout_below="@id/listViewCF"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/background_light"
-            android:text="OK"/>
+            android:text="Save"/>
 
     </RelativeLayout>
 </ScrollView>

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Dependents">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textViewD"
+            android:id="@+id/textViewFD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -23,30 +19,30 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/textViewD"
+            android:layout_below="@id/textViewFD"
             android:layout_marginTop="10dp"
             android:hint="First Name"
-            android:id="@+id/firstNameD"
+            android:id="@+id/firstNameFD"
             android:background="@android:drawable/editbox_background"
             android:inputType="text"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/firstNameD"
+            android:layout_below="@id/firstNameFD"
             android:layout_marginTop="10dp"
             android:hint="Last Name"
-            android:id="@+id/lastNameD"
+            android:id="@+id/lastNameFD"
             android:background="@android:drawable/editbox_background"
             android:inputType="text"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/lastNameD"
+            android:layout_below="@id/lastNameFD"
             android:layout_marginTop="10dp"
             android:hint="Age"
-            android:id="@+id/ageD"
+            android:id="@+id/ageFD"
             android:background="@android:drawable/editbox_background"
             android:inputType="number"
             />
@@ -54,24 +50,24 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/ageD"
-            android:id="@+id/genderD"
+            android:layout_below="@id/ageFD"
+            android:id="@+id/genderFD"
             android:layout_marginTop="10dp">
         </Spinner>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/genderD"
+            android:layout_below="@id/genderFD"
             android:textSize="16dp"
             android:text="Relationship to the Head"
-            android:id="@+id/relationshipTextView"
+            android:id="@+id/relationshipTextViewFD"
             android:layout_marginTop="10dp"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/relationshipTextView"
-            android:id="@+id/relationshipD"
+            android:layout_below="@id/relationshipTextViewFD"
+            android:id="@+id/relationshipFD"
             android:layout_marginTop="10dp">
         </Spinner>
 
@@ -80,8 +76,8 @@
             android:layout_height="60dp"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/background_light"
-            android:id="@+id/saveDBtn"
-            android:layout_below="@id/relationshipD"
+            android:id="@+id/saveBtnFD"
+            android:layout_below="@id/relationshipFD"
             android:text="Save"
             android:layout_marginTop="10dp"/>
     </RelativeLayout>

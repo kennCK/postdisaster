@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Type of Calamity"
+            android:textSize="16dp"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textViewC"
+            android:id="@+id/calamity"></Spinner>
+
+        <TextView
+            android:id="@+id/textView1C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Date"
+            android:textSize="16dp"
+            android:layout_below="@+id/calamity"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/textView1C"
+            android:layout_marginTop="10dp"
+            android:hint="Date"
+            android:id="@+id/dateCalamity"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="date"/>
+
+        <TextView
+            android:id="@+id/textView2C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Damage Status"
+            android:textSize="16dp"
+            android:layout_below="@+id/dateCalamity"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView2C"
+            android:id="@+id/typeOfCalamity"></Spinner>
+
+        <TextView
+            android:id="@+id/textView3C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Estimated Damage Amount"
+            android:textSize="16dp"
+            android:layout_below="@+id/typeOfCalamity"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/textView3C"
+            android:layout_marginTop="10dp"
+            android:hint="Optional"
+            android:id="@+id/damageAmount"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="number"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Next"
+            android:background="@color/colorPrimary"
+            android:layout_below="@id/damageAmount"
+            android:id="@+id/calamityNextBtn"
+            android:textColor="@android:color/background_light"/>
+
+    </RelativeLayout>
+</ScrollView>

@@ -4,12 +4,16 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_head"
-            android:icon="@drawable/ic_user"
-            android:title="Family Head"/>
+            android:icon="@drawable/ic_ad_user"
+            android:title="New Family Head"/>
 
         <item android:id="@+id/nav_dependents"
+            android:icon="@drawable/ic_add_users"
+            android:title="New Dependents"/>
+
+        <item android:id="@+id/nav_family_list"
             android:icon="@drawable/ic_group_user"
-            android:title="Dependents"/>
+            android:title="Family List"/>
 
         <item android:id="@+id/nav_calamity"
             android:icon="@drawable/ic_alert"
