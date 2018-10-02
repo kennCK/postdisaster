@@ -7,31 +7,31 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textViewCF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List of Family Members"
-            android:textSize="16dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:id="@+id/textViewCF"/>
+            android:text="List of Family Members"
+            android:textSize="16dp" />
 
         <ListView
+            android:id="@+id/listViewCF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listViewCF"
             android:layout_below="@+id/textViewCF"
             android:layout_marginTop="10dp"></ListView>
 
         <Button
+            android:id="@+id/okBtnCF"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/okBtnCF"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/listViewCF"
+            android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
-            android:textColor="@android:color/background_light"
-            android:text="Save"/>
+            android:text="Save"
+            android:textColor="@android:color/background_light" />
 
     </RelativeLayout>
 </ScrollView>

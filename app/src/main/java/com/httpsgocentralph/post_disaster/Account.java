@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.httpsgocentralph.post_disaster.Fragment.CalamityFragment;
 import com.httpsgocentralph.post_disaster.Fragment.DependentsFragment;
 import com.httpsgocentralph.post_disaster.Fragment.FamilyListFragment;
 import com.httpsgocentralph.post_disaster.Fragment.HouseHoldFragment;
@@ -48,6 +49,9 @@ public class Account extends AppCompatActivity implements NavigationView.OnNavig
                 break;
             case R.id.nav_family_list:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FamilyListFragment()).commit();
+                break;
+            case R.id.nav_calamity:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalamityFragment()).commit();
                 break;
             case R.id.nav_send:
                 Toast.makeText(this, "Send", Toast.LENGTH_LONG).show();

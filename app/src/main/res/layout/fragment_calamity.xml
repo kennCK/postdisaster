@@ -59,7 +59,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/textView2C"
-            android:id="@+id/typeOfCalamity"></Spinner>
+            android:id="@+id/calamityDamage"></Spinner>
 
         <TextView
             android:id="@+id/textView3C"
@@ -68,7 +68,7 @@
             android:layout_marginTop="10dp"
             android:text="Estimated Damage Amount"
             android:textSize="16dp"
-            android:layout_below="@+id/typeOfCalamity"
+            android:layout_below="@+id/calamityDamage"
             />
 
         <EditText
@@ -88,6 +88,7 @@
             android:background="@color/colorPrimary"
             android:layout_below="@id/damageAmount"
             android:id="@+id/calamityNextBtn"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/background_light"/>
 
     </RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="civil_status">
+        <item>Single</item>
+        <item>Married</item>
+        <item>Widowed</item>
+        <item>Divorced</item>
+        <item>Separated</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="household_type">
+        <item>House Owner</item>
+        <item>House In Charge</item>
+    </string-array>
+
+    <string-array name="calamity_type">
+        <item>Typhoon</item>
+        <item>Earthquake</item>
+        <item>Flooding</item>
+        <item>Landslide</item>
+        <item>Tsunami</item>
+        <item>Storm Surge</item>
+    </string-array>
+
+    <string-array name="damage_type">
+        <item>Totally Damaged</item>
+        <item>Semi Damaged</item>
+    </string-array>
+
+    <string-array name="relation">
+        <item>Daughter</item>
+        <item>Son</item>
+        <item>Father</item>
+        <item>Monther</item>
+        <item>Sister</item>
+        <item>Brother</item>
+        <item>Grand Father</item>
+        <item>Grand Monther</item>
+        <item>Cousin</item>
+        <item>Sister in Law</item>
+        <item>Friend</item>
+    </string-array>
+</resources>
