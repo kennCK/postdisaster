@@ -11,14 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.httpsgocentralph.post_disaster.Database.DatabaseHelper;
 import com.httpsgocentralph.post_disaster.Fragment.CalamityFragment;
+import com.httpsgocentralph.post_disaster.Fragment.CalamityListFragment;
 import com.httpsgocentralph.post_disaster.Fragment.DependentsFragment;
 import com.httpsgocentralph.post_disaster.Fragment.FamilyListFragment;
 import com.httpsgocentralph.post_disaster.Fragment.HouseHoldFragment;
+import com.httpsgocentralph.post_disaster.Fragment.SendFragment;
 
 public class Account extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +57,11 @@ public class Account extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.nav_calamity:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalamityFragment()).commit();
                 break;
+            case R.id.nav_history:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalamityListFragment()).commit();
+                break;
             case R.id.nav_send:
-                Toast.makeText(this, "Send", Toast.LENGTH_LONG).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SendFragment()).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

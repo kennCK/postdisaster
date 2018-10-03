@@ -17,16 +17,16 @@
             android:id="@+id/textViewFL"/>
 
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/listViewFL"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
             android:layout_below="@+id/textViewFL"
             android:layout_marginTop="10dp"></ListView>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/okBtnF"
+            android:layout_height="60dp"
+            android:id="@+id/okBtnFL"
             android:layout_marginTop="10dp"
             android:layout_below="@id/listViewFL"
             android:background="@color/colorPrimary"

@@ -9,18 +9,23 @@
 
         <item android:id="@+id/nav_dependents"
             android:icon="@drawable/ic_add_users"
-            android:title="New Dependents"/>
-
-        <item android:id="@+id/nav_family_list"
-            android:icon="@drawable/ic_group_user"
-            android:title="Family List"/>
+            android:title="New Dependent"/>
 
         <item android:id="@+id/nav_calamity"
             android:icon="@drawable/ic_alert"
-            android:title="Calamity"/>
+            android:title="New Calamity"/>
     </group>
     <item android:title="Data Transfer">
         <menu>
+
+            <item android:id="@+id/nav_family_list"
+                android:icon="@drawable/ic_group_user"
+                android:title="Family List"/>
+
+            <item android:id="@+id/nav_history"
+                android:icon="@drawable/ic_history"
+                android:title="History"/>
+
             <item android:id="@+id/nav_send"
                 android:icon="@drawable/ic_send"
                 android:title="Send"/>

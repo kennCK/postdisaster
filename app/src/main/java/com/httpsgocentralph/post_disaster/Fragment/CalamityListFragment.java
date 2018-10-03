@@ -19,7 +19,7 @@ import com.httpsgocentralph.post_disaster.R;
 
 import static android.content.ContentValues.TAG;
 
-public class FamilyListFragment extends Fragment {
+public class CalamityListFragment extends Fragment {
     DatabaseHelper db;
     View view;
     ListView listView;
@@ -28,16 +28,16 @@ public class FamilyListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_family_list, container, false);
+        view =  inflater.inflate(R.layout.fragment_calamity_list, container, false);
         db = new DatabaseHelper(view.getContext());
-        listView = (ListView)view.findViewById(R.id.listViewFL);
-        btn = (Button)view.findViewById(R.id.okBtnFL);
+        listView = (ListView)view.findViewById(R.id.listViewCL);
+        btn = (Button)view.findViewById(R.id.okBtnCL);
 
         retrieve();
         return view;
     }
     private void retrieve(){
-        Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null);
+        Cursor res = db.retrieve(Helper.TB_CALAMITIES, null);
         if(res.getCount() == 0){
             Log.d(TAG, "Calamity is Empty");
         }else{
@@ -46,8 +46,7 @@ public class FamilyListFragment extends Fragment {
             int i = 0;
 
             while (res.moveToNext()){
-                name[i] = res.getString(1) + " " + res.getString(2);
-                Log.d(TAG, "Name: " + res.getString(1));
+                name[i] = res.getString(1) + " on " + res.getString(2) + "(" + res.getString(5) + ")";
                 i++;
             }
 
