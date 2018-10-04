@@ -37,7 +37,7 @@ public class FamilyListFragment extends Fragment {
         return view;
     }
     private void retrieve(){
-        Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null);
+        Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null, "first_name ASC");
         if(res.getCount() == 0){
             Log.d(TAG, "Calamity is Empty");
         }else{

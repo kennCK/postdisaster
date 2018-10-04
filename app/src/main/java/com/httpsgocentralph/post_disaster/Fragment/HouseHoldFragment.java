@@ -106,7 +106,7 @@ public class HouseHoldFragment extends Fragment {
 
             if(db.insert(Helper.TB_HOUSEHOLDS, contentValues)){
                 Helper.alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
-                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null);
+                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null, "first_name ASC");
                 if(res.getCount() == 0){
                     Log.d(TAG, "Household is Empty");
                 }else{

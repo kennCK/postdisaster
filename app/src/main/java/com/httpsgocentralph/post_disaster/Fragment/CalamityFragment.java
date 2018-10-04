@@ -86,7 +86,7 @@ public class CalamityFragment extends Fragment {
             contentValues.put("status", "Created");
             if(db.insert(Helper.TB_CALAMITIES, contentValues)){
                 Helper.alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
-                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null);
+                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null, "id DESC");
                 if(res.getCount() == 0){
                     Log.d(TAG, "Calamity is Empty");
                 }else{

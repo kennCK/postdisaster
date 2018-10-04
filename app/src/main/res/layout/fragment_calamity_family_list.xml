@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"></ListView>
 
         <Button
-            android:id="@+id/okBtnCF"
+            android:id="@+id/saveBtnCF"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/listViewCF"

@@ -40,9 +40,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return  (result == -1) ? false : true;
     }
 
-    public Cursor retrieve(String table, String condition){
+    public Cursor retrieve(String table, String condition, String sort){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + table, null);
+        String extension = (sort.equals(null)) ? "" : " ORDER BY " + sort;
+        Cursor res = db.rawQuery("select * from " + table + extension, null);
         return res;
     }
 }

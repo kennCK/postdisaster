@@ -37,7 +37,7 @@ public class CalamityListFragment extends Fragment {
         return view;
     }
     private void retrieve(){
-        Cursor res = db.retrieve(Helper.TB_CALAMITIES, null);
+        Cursor res = db.retrieve(Helper.TB_CALAMITIES, null, "id DESC");
         if(res.getCount() == 0){
             Log.d(TAG, "Calamity is Empty");
         }else{

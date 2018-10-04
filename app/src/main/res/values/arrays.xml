@@ -44,4 +44,11 @@
         <item>Sister in Law</item>
         <item>Friend</item>
     </string-array>
+
+    <string-array name="safety_status">
+        <item>Safe</item>
+        <item>Missing</item>
+        <item>Injured</item>
+        <item>Dead</item>
+    </string-array>
 </resources>
