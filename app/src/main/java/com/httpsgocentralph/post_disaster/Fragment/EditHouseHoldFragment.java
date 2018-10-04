@@ -1,14 +1,16 @@
 package com.httpsgocentralph.post_disaster.Fragment;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +25,12 @@ import com.httpsgocentralph.post_disaster.Entity.Helper;
 import com.httpsgocentralph.post_disaster.R;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class HouseHoldFragment extends Fragment {
+public class EditHouseHoldFragment extends Fragment {
     EditText firstName;
     EditText lastName;
     EditText age;
@@ -41,11 +45,14 @@ public class HouseHoldFragment extends Fragment {
 
     String sFirstName, sLastName, sAge, sAddress, sMobileNumber, sGender, sCivilStatus, sType;
 
+    String id;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_household, container, false);
+        Bundle bundle = this.getArguments();
 
         db = new DatabaseHelper(view.getContext());
         firstName = (EditText)view.findViewById(R.id.firstName);
@@ -59,6 +66,7 @@ public class HouseHoldFragment extends Fragment {
         type = (Spinner)view.findViewById(R.id.type);
 
         save = (Button)view.findViewById(R.id.saveBtnH);
+        save.setText("UPDATE");
 
         ArrayAdapter<CharSequence> adapterG = ArrayAdapter.createFromResource(view.getContext(), R.array.gender, android.R.layout.simple_spinner_item);
         adapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -73,6 +81,11 @@ public class HouseHoldFragment extends Fragment {
         type.setAdapter(adapterT);
         genderListener();
         saveListener();
+
+        if(bundle != null){
+            id = bundle.getString("id");
+            retrieve();
+        }
 
         return view;
     }
@@ -103,29 +116,36 @@ public class HouseHoldFragment extends Fragment {
             contentValues.put("gender", sGender);
             contentValues.put("civil_status", sCivilStatus);
             contentValues.put("type", sType);
-            contentValues.put("relation", "");
-            contentValues.put("status", "household");
-            contentValues.put("created_at", String.valueOf(new Timestamp(System.currentTimeMillis())));
-            contentValues.put("updated_at", "");
-            contentValues.put("deleted_at", "");
-            long result = db.insert(Helper.TB_HOUSEHOLDS, contentValues);
-            if(result != -1){
-                Helper.alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
-                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, "", "first_name ASC");
-                if(res.getCount() == 0){
-                    Log.d(TAG, "Household is Empty");
-                }else{
-                    Log.d(TAG, "RES = " + res);
-                    StringBuffer buffer = new StringBuffer();
-                    while (res.moveToNext()){
-                        Log.d(TAG, "First Name: " + res.getString(1));
-                    }
-                }
-
+            contentValues.put("updated_at", String.valueOf(new Timestamp(System.currentTimeMillis())));
+            boolean result = db.update(Helper.TB_HOUSEHOLDS, contentValues, "id=" + id, null);
+            if(result){
+                alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
             }else{
                 Helper.alert(Helper.ERROR_INPUT_TITLE, Helper.DB_INSERT_ERROR_MESSAGE, view.getContext());
             }
         }
+    }
+
+    public void alert(String title, String message, Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                backToList();
+            }
+        });
+        builder.setMessage(message);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void backToList(){
+        Fragment newFragment = new FamilyListFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     private boolean validate(){
@@ -150,6 +170,27 @@ public class HouseHoldFragment extends Fragment {
         sGender = gender.getSelectedItem().toString().trim();
         sCivilStatus = civilStatus.getSelectedItem().toString().trim();
         sType = type.getSelectedItem().toString().trim();
+    }
+
+    private void retrieve(){
+        String condition = "id=" + id;
+        Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, condition, "");
+        if(res.getCount() == 0){
+            Log.d(TAG, "Empty Result");
+        }else{
+            int i = 0;
+            while (res.moveToNext()){
+                firstName.setText(res.getString(1));
+                lastName.setText(res.getString(2));
+                age.setText(res.getString(3));
+                mobileNumber.setText(res.getString(4));
+                address.setText(res.getString(5));
+                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(6)));
+                civilStatus.setSelection(Arrays.asList(getResources().getStringArray(R.array.civil_status)).indexOf(res.getString(7)));
+                type.setSelection(Arrays.asList(getResources().getStringArray(R.array.household_type)).indexOf(res.getString(8)));
+                i++;
+            }
+        }
     }
 
 

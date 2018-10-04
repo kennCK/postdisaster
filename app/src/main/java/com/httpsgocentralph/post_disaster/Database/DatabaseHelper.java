@@ -19,13 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table " + Helper.TB_HOUSEHOLDS +
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name text, last_name text, age text, mobile_number text, " +
-                "address text, gender text, civil_status text, type text, relation text, status text)");
+                "address text, gender text, civil_status text, type text, relation text, status text,created_at timestamp, updated_at timestamp, deleted_at timestamp)");
 
         sqLiteDatabase.execSQL("create table " + Helper.TB_CALAMITIES +
-                " (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, date text, damage_status text, damage_amount text, status text)");
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, date text, damage_status text, damage_amount text, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
 
         sqLiteDatabase.execSQL("create table " + Helper.TB_CALAMITY_NAMES +
-                " (id INTEGER PRIMARY KEY AUTOINCREMENT, calamity_id INTEGER, household_name_id, status text)");
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, calamity_id INTEGER, household_name_id, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
     }
 
     @Override
@@ -36,16 +36,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insert(String table, ContentValues contentValues){
+    public long insert(String table, ContentValues contentValues){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.insert(table, null, contentValues);
+        return result;
+    }
+
+    public boolean update(String table, ContentValues contentValues, String clause, String[] args){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.update(table, contentValues, clause, args);
         return  (result == -1) ? false : true;
     }
 
     public Cursor retrieve(String table, String condition, String sort){
         SQLiteDatabase db = this.getWritableDatabase();
-        String extension = (sort.equals(null)) ? "" : " ORDER BY " + sort;
-        Cursor res = db.rawQuery("select * from " + table + extension, null);
+        String extension = (sort.equals("")) ? "" : " ORDER BY " + sort;
+        String cond = (condition.equals("")) ? "" : " AND " + condition;
+        Cursor res = db.rawQuery("select * from " + table + " WHERE (deleted_at = null OR deleted_at = '')" + cond + extension, null);
         return res;
     }
 }

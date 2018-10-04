@@ -1,11 +1,15 @@
 package com.httpsgocentralph.post_disaster.Fragment;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +24,11 @@ import com.httpsgocentralph.post_disaster.Entity.Helper;
 import com.httpsgocentralph.post_disaster.R;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 import static android.content.ContentValues.TAG;
 
-public class DependentsFragment extends Fragment {
+public class EditDependentsFragment extends Fragment {
     EditText firstName;
     EditText lastName;
     EditText age;
@@ -34,12 +39,15 @@ public class DependentsFragment extends Fragment {
 
     DatabaseHelper db;
 
+    String id;
+
     String sFirstName,sLastName, sAge, sGender, sRelation;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_dependents, container, false);
+        Bundle bundle = this.getArguments();
         db = new DatabaseHelper(view.getContext());
         firstName = (EditText)view.findViewById(R.id.firstNameFD);
         lastName = (EditText)view.findViewById(R.id.lastNameFD);
@@ -47,6 +55,7 @@ public class DependentsFragment extends Fragment {
         gender = (Spinner)view.findViewById(R.id.genderFD);
         relation = (Spinner)view.findViewById(R.id.relationshipFD);
         saveBtnFD = (Button)view.findViewById(R.id.saveBtnFD);
+        saveBtnFD.setText("UPDATE");
 
         ArrayAdapter<CharSequence> adapterG = ArrayAdapter.createFromResource(view.getContext(), R.array.gender, android.R.layout.simple_spinner_item);
         adapterG.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -55,6 +64,11 @@ public class DependentsFragment extends Fragment {
         ArrayAdapter<CharSequence> adapterR = ArrayAdapter.createFromResource(view.getContext(), R.array.relation, android.R.layout.simple_spinner_item);
         adapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         relation.setAdapter(adapterR);
+
+        if(bundle != null){
+            id = bundle.getString("id");
+            retrieve();
+        }
 
         btnListener();
         return view;
@@ -83,32 +97,53 @@ public class DependentsFragment extends Fragment {
             contentValues.put("first_name", sFirstName);
             contentValues.put("last_name", sLastName);
             contentValues.put("age", sAge);
-            contentValues.put("mobile_number", "");
-            contentValues.put("address", "");
             contentValues.put("gender", sGender);
-            contentValues.put("civil_status", "");
-            contentValues.put("type", "");
             contentValues.put("relation", sRelation);
-            contentValues.put("status", "dependents");
-            contentValues.put("created_at", String.valueOf(new Timestamp(System.currentTimeMillis())));
-            contentValues.put("updated_at", "");
-            contentValues.put("deleted_at", "");
-            long result = db.insert(Helper.TB_HOUSEHOLDS, contentValues);
-            if(result != -1){
-                Helper.alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
-                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, "", "first_name ASC");
-                if(res.getCount() == 0){
-                    Log.d(TAG, "Household is Empty");
-                }else{
-                    Log.d(TAG, "RES = " + res);
-                    StringBuffer buffer = new StringBuffer();
-                    while (res.moveToNext()){
-                        Log.d(TAG, "First Name: " + res.getString(1));
-                    }
-                }
+            contentValues.put("updated_at", String.valueOf(new Timestamp(System.currentTimeMillis())));
+            boolean result = db.update(Helper.TB_HOUSEHOLDS, contentValues, "id=" + id, null);
+            if(result){
+                alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
             }else{
                 Helper.alert(Helper.ERROR_INPUT_TITLE, Helper.DB_INSERT_ERROR_MESSAGE, view.getContext());
             }
         }
+    }
+    private void retrieve(){
+        String condition = "id=" + id;
+        Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, condition, "");
+        if(res.getCount() == 0){
+            Log.d(TAG, "Empty Result");
+        }else{
+            int i = 0;
+            while (res.moveToNext()){
+                firstName.setText(res.getString(1));
+                lastName.setText(res.getString(2));
+                age.setText(res.getString(3));
+                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(6)));
+                relation.setSelection(Arrays.asList(getResources().getStringArray(R.array.relation)).indexOf(res.getString(9)));
+                i++;
+            }
+        }
+    }
+    public void alert(String title, String message, Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                backToList();
+            }
+        });
+        builder.setMessage(message);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void backToList(){
+        Fragment newFragment = new FamilyListFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/textViewCF"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="List of Family Members"
+        android:textSize="16dp" />
 
-        <TextView
-            android:id="@+id/textViewCF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="List of Family Members"
-            android:textSize="16dp" />
+    <Button
+        android:id="@+id/saveBtnCF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/listViewCF"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="@android:color/background_light" />
 
-        <ListView
-            android:id="@+id/listViewCF"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_below="@+id/textViewCF"
-            android:layout_marginTop="10dp"></ListView>
+    <ListView
+        android:id="@+id/listViewCF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/saveBtnCF"
+        android:layout_marginTop="10dp"></ListView>
 
-        <Button
-            android:id="@+id/saveBtnCF"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/listViewCF"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
-            android:text="Save"
-            android:textColor="@android:color/background_light" />
 
-    </RelativeLayout>
-</ScrollView>
+</LinearLayout>

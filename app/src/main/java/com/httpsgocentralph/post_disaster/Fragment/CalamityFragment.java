@@ -24,6 +24,8 @@ import com.httpsgocentralph.post_disaster.Database.DatabaseHelper;
 import com.httpsgocentralph.post_disaster.Entity.Helper;
 import com.httpsgocentralph.post_disaster.R;
 
+import java.sql.Timestamp;
+
 import static android.content.ContentValues.TAG;
 
 public class CalamityFragment extends Fragment {
@@ -84,9 +86,13 @@ public class CalamityFragment extends Fragment {
             contentValues.put("damage_status", sDamageStatus);
             contentValues.put("damage_amount", sDamageAmount);
             contentValues.put("status", "Created");
-            if(db.insert(Helper.TB_CALAMITIES, contentValues)){
+            contentValues.put("created_at", String.valueOf(new Timestamp(System.currentTimeMillis())));
+            contentValues.put("updated_at", "");
+            contentValues.put("deleted_at", "");
+            long result = db.insert(Helper.TB_CALAMITIES, contentValues);
+            if(result != -1){
                 Helper.alert(Helper.DB_INSERT_SUCCESS_TITLE, Helper.DB_INSERT_SUCCESS_MESSAGE,view.getContext());
-                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, null, "id DESC");
+                Cursor res = db.retrieve(Helper.TB_HOUSEHOLDS, "", "id DESC");
                 if(res.getCount() == 0){
                     Log.d(TAG, "Calamity is Empty");
                 }else{
@@ -96,6 +102,9 @@ public class CalamityFragment extends Fragment {
                     }
                 }
                 Fragment newFragment = new CalamityFamilyListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", (int) result);
+                newFragment.setArguments(bundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, newFragment);
                 transaction.addToBackStack(null);
