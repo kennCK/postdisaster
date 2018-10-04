@@ -18,8 +18,8 @@
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listViewFL"
+            android:layout_height="350dp"
+            android:id="@+id/listViewSend"
             android:layout_below="@+id/textViewFL"
             android:layout_marginTop="10dp"></ListView>
 
@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:id="@+id/okBtnF"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/listViewFL"
+            android:layout_below="@id/listViewSend"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/background_light"
             android:text="Next"/>
