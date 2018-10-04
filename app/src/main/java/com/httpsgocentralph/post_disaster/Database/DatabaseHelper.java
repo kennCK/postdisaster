@@ -11,6 +11,8 @@ import com.httpsgocentralph.post_disaster.Entity.Helper;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, Helper.DB_NAME, null, 1);
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        onUpgrade(db, 1,1);
     }
 
     @Override
