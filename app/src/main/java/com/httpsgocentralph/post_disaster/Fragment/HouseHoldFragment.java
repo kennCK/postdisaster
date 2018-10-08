@@ -1,9 +1,6 @@
 package com.httpsgocentralph.post_disaster.Fragment;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,9 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.httpsgocentralph.post_disaster.Database.DatabaseHelper;
+import com.httpsgocentralph.post_disaster.Entity.Account;
 import com.httpsgocentralph.post_disaster.Entity.Helper;
 import com.httpsgocentralph.post_disaster.R;
+import com.httpsgocentralph.post_disaster.Utils.CustomSharedPreference;
 
 import java.sql.Timestamp;
 
@@ -41,11 +42,20 @@ public class HouseHoldFragment extends Fragment {
 
     String sFirstName, sLastName, sAge, sAddress, sMobileNumber, sGender, sCivilStatus, sType;
 
-
+    CustomSharedPreference sharedpreferences;
+    Gson gson;
+    GsonBuilder gsonBuilder;
+    Account accountObject;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_household, container, false);
+
+
+        sharedpreferences = new CustomSharedPreference(view.getContext());
+        gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        accountObject = gson.fromJson(sharedpreferences.getAccountData(), Account.class);
 
         db = new DatabaseHelper(view.getContext());
         firstName = (EditText)view.findViewById(R.id.firstName);
@@ -77,6 +87,15 @@ public class HouseHoldFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        sharedpreferences = new CustomSharedPreference(view.getContext());
+        gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
+        accountObject = gson.fromJson(sharedpreferences.getAccountData(), Account.class);
+    }
+
     private void genderListener(){
     }
 
@@ -95,6 +114,7 @@ public class HouseHoldFragment extends Fragment {
         init();
         if(validate()){
             ContentValues contentValues = new ContentValues();
+            contentValues.put("account_id", accountObject.getId());
             contentValues.put("first_name", sFirstName);
             contentValues.put("last_name", sLastName);
             contentValues.put("age", sAge);

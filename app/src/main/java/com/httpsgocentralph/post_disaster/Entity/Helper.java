@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 
 public class Helper {
     public static final String DB_NAME = "post_disaster.db";
+    public static final String TB_ACCOUNTS = "accounts";
     public static final String TB_HOUSEHOLDS = "household_names";
     public static final String TB_CALAMITIES = "calamities";
     public static final String TB_CALAMITY_NAMES = "calamity_names";
@@ -15,6 +16,10 @@ public class Helper {
     public static final String DB_INSERT_ERROR_MESSAGE = "Something went wrong with the database";
     public static final String DB_INSERT_SUCCESS_MESSAGE = "You request was successfully saved!";
     public static final String DB_INSERT_SUCCESS_TITLE = "Success Message!";
+
+
+    public static final String MyPREFERENCES = "PDIGS";
+    public static final String ACCOUNT_DATA = "ACCOUNT_DATA";
 
 
     public static void alert(String title, String message, Context context){

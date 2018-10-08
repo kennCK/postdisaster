@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Welcome to PDIGS!"
+        android:id="@+id/mainUsername"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Post-Disaster Information Gathering System"
+        android:text="Welcome to PDIGS!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="12dp" />
 

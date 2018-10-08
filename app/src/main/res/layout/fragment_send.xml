@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_add_alerts"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/sendImg"
+        />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="PDIGS"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/sendImg"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/textViewSL"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bluetooth Devices"
-            android:textSize="16dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:id="@+id/textViewFL"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bluetooth Devices"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textViewSL"
+        android:id="@+id/textViewFL"/>
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="350dp"
-            android:id="@+id/listViewSend"
-            android:layout_below="@+id/textViewFL"
-            android:layout_marginTop="10dp"></ListView>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/okBtnF"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/listViewSend"
-            android:background="@color/colorPrimary"
-            android:textColor="@android:color/background_light"
-            android:text="Next"/>
-
-    </RelativeLayout>
-</ScrollView>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewSend"
+        android:layout_below="@+id/textViewFL"
+        android:layout_marginTop="10dp"></ListView>
+</RelativeLayout>

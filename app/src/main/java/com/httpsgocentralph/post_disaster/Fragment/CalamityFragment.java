@@ -1,8 +1,6 @@
 package com.httpsgocentralph.post_disaster.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,13 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.httpsgocentralph.post_disaster.Account;
 import com.httpsgocentralph.post_disaster.Database.DatabaseHelper;
 import com.httpsgocentralph.post_disaster.Entity.Helper;
 import com.httpsgocentralph.post_disaster.R;

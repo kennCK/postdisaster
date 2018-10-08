@@ -29,6 +29,14 @@
             <item android:id="@+id/nav_send"
                 android:icon="@drawable/ic_send"
                 android:title="Send"/>
+
+            <item android:id="@+id/nav_reset"
+                android:icon="@drawable/ic_reset"
+                android:title="Reset Database"/>
+
+            <item android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_arrow"
+                android:title="Logout"/>
         </menu>
     </item>
 </menu>

@@ -17,12 +17,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("create table " + Helper.TB_ACCOUNTS +
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name text, last_name text, username text UNIQUE, password text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
+
         sqLiteDatabase.execSQL("create table " + Helper.TB_HOUSEHOLDS +
-                " (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name text, last_name text, age text, mobile_number text, " +
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, account_id INTEGER, under INTEGER, first_name text, last_name text, age text, mobile_number text, " +
                 "address text, gender text, civil_status text, type text, relation text, status text,created_at timestamp, updated_at timestamp, deleted_at timestamp)");
 
         sqLiteDatabase.execSQL("create table " + Helper.TB_CALAMITIES +
-                " (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, date text, damage_status text, damage_amount text, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, account_id INTEGER, name text, date text, damage_status text, damage_amount text, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
 
         sqLiteDatabase.execSQL("create table " + Helper.TB_CALAMITY_NAMES +
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT, calamity_id INTEGER, household_name_id, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
@@ -30,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Helper.TB_ACCOUNTS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Helper.TB_HOUSEHOLDS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Helper.TB_CALAMITIES);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Helper.TB_CALAMITY_NAMES);
@@ -54,5 +58,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String cond = (condition.equals("")) ? "" : " AND " + condition;
         Cursor res = db.rawQuery("select * from " + table + " WHERE (deleted_at = null OR deleted_at = '')" + cond + extension, null);
         return res;
+    }
+
+    public void reset(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        onUpgrade(db, 1,1);
+    }
+
+    public void create(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        // onCreate(db);
     }
 }
