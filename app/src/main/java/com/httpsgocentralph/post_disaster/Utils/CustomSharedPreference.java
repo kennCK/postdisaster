@@ -23,4 +23,12 @@ public class CustomSharedPreference {
     public String getAccountData(){
         return sharedPreferences.getString(Helper.ACCOUNT_DATA, "");
     }
+
+    public void setHouseHoldId(String id){
+        sharedPreferences.edit().putString("HOUSEHOLD_ID", id).apply();
+    }
+
+    public String getHouseHoldId(){
+        return sharedPreferences.getString("HOUSEHOLD_ID", "");
+    }
 }

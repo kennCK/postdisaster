@@ -8,9 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.httpsgocentralph.post_disaster.Entity.Helper;
 
+import java.io.File;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
+    Context context;
     public DatabaseHelper(Context context) {
         super(context, Helper.DB_NAME, null, 1);
+        this.context = context;
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        onUpgrade(db, 1,1);
     }
@@ -28,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " (id INTEGER PRIMARY KEY AUTOINCREMENT, account_id INTEGER, name text, date text, damage_status text, damage_amount text, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
 
         sqLiteDatabase.execSQL("create table " + Helper.TB_CALAMITY_NAMES +
-                " (id INTEGER PRIMARY KEY AUTOINCREMENT, calamity_id INTEGER, household_name_id, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, calamity_id INTEGER, under INTEGER, household_name_id, status text, created_at timestamp, updated_at timestamp, deleted_at timestamp)");
     }
 
     @Override
@@ -67,6 +71,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void create(){
         SQLiteDatabase db = this.getWritableDatabase();
-        // onCreate(db);
+        File dbFile = context.getDatabasePath(Helper.DB_NAME);
+        if(!dbFile.exists()){
+            onCreate(db);
+        }
     }
 }

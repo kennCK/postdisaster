@@ -3,15 +3,17 @@ package com.httpsgocentralph.post_disaster.Entity;
 public class CalamityName {
     String id;
     String calamityId;
+    String under;
     String householdNameId;
     String status;
     String createdAt;
     String updatedAt;
     String deletedAt;
 
-    public CalamityName(String id, String calamityId, String householdNameId, String status, String createdAt, String updatedAt, String deletedAt) {
+    public CalamityName(String id, String calamityId, String under, String householdNameId, String status, String createdAt, String updatedAt, String deletedAt) {
         this.id = id;
         this.calamityId = calamityId;
+        this.under = under;
         this.householdNameId = householdNameId;
         this.status = status;
         this.createdAt = createdAt;
@@ -33,6 +35,14 @@ public class CalamityName {
 
     public void setCalamityId(String calamityId) {
         this.calamityId = calamityId;
+    }
+
+    public String getUnder() {
+        return under;
+    }
+
+    public void setUnder(String under) {
+        this.under = under;
     }
 
     public String getHouseholdNameId() {

@@ -180,14 +180,14 @@ public class EditHouseHoldFragment extends Fragment {
         }else{
             int i = 0;
             while (res.moveToNext()){
-                firstName.setText(res.getString(1));
-                lastName.setText(res.getString(2));
-                age.setText(res.getString(3));
-                mobileNumber.setText(res.getString(4));
-                address.setText(res.getString(5));
-                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(6)));
-                civilStatus.setSelection(Arrays.asList(getResources().getStringArray(R.array.civil_status)).indexOf(res.getString(7)));
-                type.setSelection(Arrays.asList(getResources().getStringArray(R.array.household_type)).indexOf(res.getString(8)));
+                firstName.setText(res.getString(3));
+                lastName.setText(res.getString(4));
+                age.setText(res.getString(5));
+                mobileNumber.setText(res.getString(6));
+                address.setText(res.getString(7));
+                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(8)));
+                civilStatus.setSelection(Arrays.asList(getResources().getStringArray(R.array.civil_status)).indexOf(res.getString(9)));
+                type.setSelection(Arrays.asList(getResources().getStringArray(R.array.household_type)).indexOf(res.getString(10)));
                 i++;
             }
         }

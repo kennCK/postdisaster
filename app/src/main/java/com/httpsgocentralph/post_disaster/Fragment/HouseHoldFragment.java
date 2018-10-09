@@ -115,6 +115,7 @@ public class HouseHoldFragment extends Fragment {
         if(validate()){
             ContentValues contentValues = new ContentValues();
             contentValues.put("account_id", accountObject.getId());
+            contentValues.put("under", "");
             contentValues.put("first_name", sFirstName);
             contentValues.put("last_name", sLastName);
             contentValues.put("age", sAge);

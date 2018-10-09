@@ -72,8 +72,8 @@ public class Register extends AppCompatActivity {
             ContentValues contentValues = new ContentValues();
             contentValues.put("first_name", sFirstName);
             contentValues.put("last_name", sLastName);
-            contentValues.put("username", sPassword);
-            contentValues.put("password", sUsername);
+            contentValues.put("username", sUsername);
+            contentValues.put("password", sPassword);
             contentValues.put("created_at", date);
             contentValues.put("updated_at", "");
             contentValues.put("deleted_at", "");

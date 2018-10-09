@@ -2,6 +2,8 @@ package com.httpsgocentralph.post_disaster.Entity;
 
 public class Household {
     String id;
+    String accountId;
+    String under;
     String firstName;
     String lastName;
     String age;
@@ -16,8 +18,10 @@ public class Household {
     String updatedAt;
     String deletedAt;
 
-    public Household(String id, String firstName, String lastName, String age, String mobileNumber, String address, String gender, String civilStatus, String type, String relation, String status, String createdAt, String updatedAt, String deletedAt) {
+    public Household(String id, String accountId, String under, String firstName, String lastName, String age, String mobileNumber, String address, String gender, String civilStatus, String type, String relation, String status, String createdAt, String updatedAt, String deletedAt) {
         this.id = id;
+        this.accountId = accountId;
+        this.under = under;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -39,6 +43,22 @@ public class Household {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public String getUnder() {
+        return under;
+    }
+
+    public void setUnder(String under) {
+        this.under = under;
     }
 
     public String getFirstName() {

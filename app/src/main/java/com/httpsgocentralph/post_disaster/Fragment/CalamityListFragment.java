@@ -111,7 +111,8 @@ public class CalamityListFragment extends Fragment {
                         res.getString(5),
                         res.getString(6),
                         res.getString(7),
-                        res.getString(8)
+                        res.getString(8),
+                        res.getString(9)
                 );
                 i++;
             }

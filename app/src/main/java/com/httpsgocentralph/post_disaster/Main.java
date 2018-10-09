@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.httpsgocentralph.post_disaster.Fragment.SendFragment;
 import com.httpsgocentralph.post_disaster.Utils.CustomSharedPreference;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private static final String TAG = "Main";
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TextView username;
@@ -44,6 +46,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         sharedpreferences = new CustomSharedPreference(this);
         gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
+        Log.d(TAG, "SESSION : " + sharedpreferences.getAccountData());
         account = gson.fromJson(sharedpreferences.getAccountData(), Account.class);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

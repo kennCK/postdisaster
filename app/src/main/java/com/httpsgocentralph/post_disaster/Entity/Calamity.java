@@ -7,6 +7,7 @@ import com.httpsgocentralph.post_disaster.R;
 
 public class Calamity {
     String id;
+    String accountId;
     String name;
     String date;
     String damageStatus;
@@ -16,8 +17,9 @@ public class Calamity {
     String updatedAt;
     String deletedAt;
 
-    public Calamity(String id, String name, String date, String damageStatus, String dataAmount, String status, String createdAt, String updatedAt, String deletedAt) {
+    public Calamity(String id, String accountId, String name, String date, String damageStatus, String dataAmount, String status, String createdAt, String updatedAt, String deletedAt) {
         this.id = id;
+        this.accountId = accountId;
         this.name = name;
         this.date = date;
         this.damageStatus = damageStatus;
@@ -34,6 +36,14 @@ public class Calamity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public String getName() {

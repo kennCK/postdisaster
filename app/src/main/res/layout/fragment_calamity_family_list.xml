@@ -30,13 +30,19 @@
             android:textColor="@android:color/background_light" />
     </LinearLayout>
 
-
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/linearLayout"
+        android:id="@+id/familyListCalamity"
+        android:layout_marginTop="10dp">
+    </Spinner>
 
     <ListView
         android:id="@+id/listViewCF"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout"
+        android:layout_below="@+id/familyListCalamity"
         android:layout_marginTop="10dp"></ListView>
 
 

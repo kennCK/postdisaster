@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.httpsgocentralph.post_disaster.Database.DatabaseHelper;
 import com.httpsgocentralph.post_disaster.Entity.Helper;
@@ -76,9 +77,11 @@ public class Login extends AppCompatActivity {
         }else{
             progressDialog.dismiss();
             String condition = "( username = '" + sUsername + "' AND password = '" + sPassword + "')";
+
+            // String condition = "(username = '" + sUsername + "')";
             Cursor res = db.retrieve(Helper.TB_ACCOUNTS, condition, "");
             if(res.getCount() == 0){
-                Helper.alert(Helper.ERROR_INPUT_TITLE, "Username and password did not exist.", Login.this);
+                Helper.alert("Unable to Login", "Username and password did not exist.", Login.this);
             }else{
                 String data = "{";
                 while (res.moveToNext()){
@@ -89,10 +92,11 @@ public class Login extends AppCompatActivity {
                     data += "'password': '" + res.getString(4) + "',";
                     data += "'created_at': '" + res.getString(5) + "',";
                     data += "'updated_at': '" + res.getString(6) + "',";
-                    data += "'deleted_at': '" + res.getString(7) + "',";
+                    data += "'deleted_at': '" + res.getString(7) + "'";
                 }
                 data += "}";
                 Log.d(TAG, "RES : " + data);
+                // Toast.makeText(this, data, Toast.LENGTH_LONG).show();
                 sharedpreferences.setAccountData(data);
                 Intent accIntent = new Intent(Login.this, Main.class);
                 startActivity(accIntent);

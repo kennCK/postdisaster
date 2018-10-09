@@ -34,6 +34,7 @@ public class EditDependentsFragment extends Fragment {
     EditText age;
     Spinner gender;
     Spinner relation;
+    Spinner list;
     Button saveBtnFD;
     View view;
 
@@ -54,6 +55,8 @@ public class EditDependentsFragment extends Fragment {
         age = (EditText)view.findViewById(R.id.ageFD);
         gender = (Spinner)view.findViewById(R.id.genderFD);
         relation = (Spinner)view.findViewById(R.id.relationshipFD);
+        list = (Spinner)view.findViewById(R.id.familyListDependents);
+        list.setVisibility(View.INVISIBLE);
         saveBtnFD = (Button)view.findViewById(R.id.saveBtnFD);
         saveBtnFD.setText("UPDATE");
 
@@ -116,11 +119,11 @@ public class EditDependentsFragment extends Fragment {
         }else{
             int i = 0;
             while (res.moveToNext()){
-                firstName.setText(res.getString(1));
-                lastName.setText(res.getString(2));
-                age.setText(res.getString(3));
-                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(6)));
-                relation.setSelection(Arrays.asList(getResources().getStringArray(R.array.relation)).indexOf(res.getString(9)));
+                firstName.setText(res.getString(3));
+                lastName.setText(res.getString(4));
+                age.setText(res.getString(5));
+                gender.setSelection(Arrays.asList(getResources().getStringArray(R.array.gender)).indexOf(res.getString(8)));
+                relation.setSelection(Arrays.asList(getResources().getStringArray(R.array.relation)).indexOf(res.getString(11)));
                 i++;
             }
         }

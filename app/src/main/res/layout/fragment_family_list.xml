@@ -15,11 +15,19 @@
         android:layout_marginTop="10dp"
         android:id="@+id/textViewFL"/>
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/textViewFL"
+        android:id="@+id/familyListSummary"
+        android:layout_marginTop="10dp">
+    </Spinner>
+
     <ListView
         android:id="@+id/listViewFL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textViewFL"
+        android:layout_below="@+id/familyListSummary"
         android:layout_marginTop="10dp"></ListView>
 
 

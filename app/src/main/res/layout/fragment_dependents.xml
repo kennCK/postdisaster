@@ -16,10 +16,20 @@
             android:text="Add Dependents"
             android:textSize="16dp"
             />
-        <EditText
+
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/textViewFD"
+            android:id="@+id/familyListDependents"
+            android:layout_marginTop="10dp">
+        </Spinner>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/familyListDependents"
             android:layout_marginTop="10dp"
             android:hint="First Name"
             android:id="@+id/firstNameFD"
