@@ -14,7 +14,7 @@
 
     <string-array name="household_type">
         <item>House Owner</item>
-        <item>House In Charge</item>
+        <item>Renter</item>
     </string-array>
 
     <string-array name="calamity_type">
@@ -28,21 +28,18 @@
 
     <string-array name="damage_type">
         <item>Totally Damaged</item>
-        <item>Semi Damaged</item>
+        <item>Partially Damaged</item>
     </string-array>
 
     <string-array name="relation">
-        <item>Daughter</item>
+        <item>Husband</item>
+        <item>Wife</item>
         <item>Son</item>
+        <item>Daughter</item>
         <item>Father</item>
-        <item>Monther</item>
+        <item>Mother</item>
         <item>Sister</item>
         <item>Brother</item>
-        <item>Grand Father</item>
-        <item>Grand Monther</item>
-        <item>Cousin</item>
-        <item>Sister in Law</item>
-        <item>Friend</item>
     </string-array>
 
     <string-array name="safety_status">

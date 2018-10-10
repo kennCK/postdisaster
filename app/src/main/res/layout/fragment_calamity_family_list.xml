@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/linearLayout">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/textViewCF"
             android:layout_width="match_parent"
@@ -19,31 +17,33 @@
             android:layout_weight="0.5"
             android:textSize="16dp" />
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/textViewCF"
+            android:id="@+id/familyListCalamity"
+            android:layout_marginTop="10dp">
+        </Spinner>
+
+        <ListView
+            android:id="@+id/listViewCF"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_below="@+id/familyListCalamity"
+            android:layout_marginTop="10dp"></ListView>
+
+
         <Button
             android:id="@+id/saveBtnCF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewCF"
-            android:layout_weight="0.5"
+            android:layout_height="60dp"
+            android:layout_below="@id/listViewCF"
             android:background="@color/colorPrimary"
             android:text="Save"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
             android:textColor="@android:color/background_light" />
+
+
     </LinearLayout>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/linearLayout"
-        android:id="@+id/familyListCalamity"
-        android:layout_marginTop="10dp">
-    </Spinner>
-
-    <ListView
-        android:id="@+id/listViewCF"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/familyListCalamity"
-        android:layout_marginTop="10dp"></ListView>
-
-
-</LinearLayout>
+</ScrollView>
