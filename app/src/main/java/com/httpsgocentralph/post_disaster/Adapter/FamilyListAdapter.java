@@ -29,7 +29,10 @@ public class FamilyListAdapter extends ArrayAdapter<Household> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_textview, parent, false);
         }
         name = (TextView) convertView.findViewById(R.id.textViewLayout);
-        name.setText(household.getFirstName() + " " + household.getLastName());
+        String completeName = household.getFirstName() + " " + household.getLastName();
+        String type = (household.getStatus().equals("household")) ? household.getType() :
+                household.getRelation();
+        name.setText(completeName + " (" + type + ")");
         return convertView;
     }
 }

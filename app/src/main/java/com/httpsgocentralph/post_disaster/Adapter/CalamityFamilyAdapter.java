@@ -37,7 +37,9 @@ public class CalamityFamilyAdapter extends ArrayAdapter<CalamityFamily> {
         name = (TextView) convertView.findViewById(R.id.selectText);
         spinner = (Spinner) convertView.findViewById(R.id.selectStatus);
         String completeName = calamityFamily.getHousehold().getFirstName() + " " + calamityFamily.getHousehold().getLastName();
-        name.setText(completeName);
+        String type = (calamityFamily.getHousehold().getStatus().equals("household")) ? calamityFamily.getHousehold().getType() :
+                calamityFamily.getHousehold().getRelation();
+        name.setText(completeName + "\n(" + type + ")");
         spinner.setAdapter(calamityFamily.getStatus());
 
         Log.d(TAG, "getView: " + calamityFamily.getSelected());
