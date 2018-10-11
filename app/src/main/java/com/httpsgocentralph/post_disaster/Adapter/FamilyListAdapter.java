@@ -30,7 +30,7 @@ public class FamilyListAdapter extends ArrayAdapter<Household> {
         }
         name = (TextView) convertView.findViewById(R.id.textViewLayout);
         String completeName = household.getFirstName() + " " + household.getLastName();
-        String type = (household.getStatus().equals("household")) ? household.getType() :
+        String type = (household.getStatus().equals("household")) ? "Head of the Family" :
                 household.getRelation();
         name.setText(completeName + " (" + type + ")");
         return convertView;
